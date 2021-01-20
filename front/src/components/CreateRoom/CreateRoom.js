@@ -23,13 +23,6 @@ function CreateRoom({ handleClick }) {
   }
 
   return (
-    // <div className="create-room">
-    //   <form className="create-room__form" onSubmit={handleSubmit}>
-    //     <input type="text" placeholder="Enter your room name..." value={name} onChange={handleChange} required />
-    //     <button className="btn-submit" type="submit">Create</button>
-    //     <button className="btn-cancel" onClick={handleClick}>Cancel</button>
-    //   </form>
-    // </div>
    <div className="cr-box">
    <h2>Create new Room!</h2>
    

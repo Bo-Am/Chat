@@ -1,4 +1,4 @@
-import { ADD_USER, ADD_ROOM, ADD_AVAILABLE_ROOM, ADD_ERROR, JOIN_ROOM, DISCONNECT, SEND_MESSAGE } from './action';
+import { ADD_USER, ADD_ROOM, ADD_AVAILABLE_ROOM, ADD_ERROR, JOIN_ROOM, DISCONNECT, SEND_MESSAGE } from './index';
 
 export const addUserAC = (name) => ({
   type: ADD_USER,
@@ -31,11 +31,13 @@ export const joinRoomAC = (user, roomId) => ({
   roomId,
 });
 
+
 export const sendMessageAC = (message) => ({
   type: SEND_MESSAGE,
   newMessage: message
 });
 
+// fetch запрос POST при регистрации пользователя - отправляются данные name, email, password пользователя
 export const fetchNewUserAC = (name, email, password) => {
   return async (dispatch) => {
     const response = await fetch('http://localhost:5000/auth/signup', {
@@ -54,6 +56,7 @@ export const fetchNewUserAC = (name, email, password) => {
   }
 }
 
+// fetch запрос POST при авторизации пользователя - отправляются данные email, password пользователя
 export const fetchLoginAC = (email, password) => {
   return async (dispatch) => {
     const response = await fetch('http://localhost:5000/auth/login', {
@@ -64,7 +67,7 @@ export const fetchLoginAC = (email, password) => {
       body: JSON.stringify({ email, password }),
     });
     const result = await response.json();
-    console.log(result);
+    // debugger
     if (result.user) {
       dispatch(addUserAC(result.user));
     } else {
@@ -72,7 +75,7 @@ export const fetchLoginAC = (email, password) => {
     }
   }
 }
-
+// fetch запрос POST при создании комнаты - отправляется название, id пользователя
 export const fetchNewRoomAC = (name, userId) => {
   return async (dispatch) => {
     const response = await fetch('http://localhost:5000/rooms/', {
@@ -87,13 +90,14 @@ export const fetchNewRoomAC = (name, userId) => {
   }
 }
 
+// fetch запрос GET на получение всех доступных комнат
 export const fetchAllRoomsAC = () => {
   return async (dispatch) => {
     const response = await fetch('http://localhost:5000/rooms/', {
       method: 'GET',
     });
     const result = await response.json();
-    console.log(result.rooms);
+    // debugger
     if (!result.rooms.length) {
       return;
     }
@@ -102,7 +106,7 @@ export const fetchAllRoomsAC = () => {
     }
   }
 }
-
+// fetch запрос на добавление пользователя к определенной комнате, передается сам пользователь и id комнаты
 export const fetchJoinRoomAC = (user, roomId) => {
   return async (dispatch) => {
     const response = await fetch('http://localhost:5000/rooms/room/user', {
@@ -118,6 +122,7 @@ export const fetchJoinRoomAC = (user, roomId) => {
   }
 }
 
+// fetch запрос на отправление сообщения
 export const fetchSendMessageAC = (user, roomId, text, socket) => {
   return async (dispatch) => {
     const response = await fetch('http://localhost:5000/rooms/room/message', {
@@ -126,10 +131,12 @@ export const fetchSendMessageAC = (user, roomId, text, socket) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ user, roomId, text }),
+      // debugger
     });
     const result = await response.json();
     if (result.message) {
       dispatch(sendMessageAC(result.message));
+      // debugger
       socket.emit('message', result.message, () => {
         console.log('message sent');
       })

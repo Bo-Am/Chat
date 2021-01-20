@@ -4,7 +4,7 @@ import './Messanger.scss';
 import io from 'socket.io-client';
 import ScrollToBottom from 'react-scroll-to-bottom';
 import JoinRoom from '../JoinRoom/JoinRoom';
-import Message from '../Message/Message';
+import MessageCard from './MessageCard/MessageCard';
 import { fetchSendMessageAC, sendMessageAC } from '../../redux/action-creator';
 
 let socket;
@@ -57,11 +57,6 @@ function Messanger() {
       await fetchSendMessage(dispatch);
     }
   }
-// const outMessage = {
-//   flexStart,
-//   background: "#d1d646",
-// }
-
 
   return (
     <div className="messanger">
@@ -72,7 +67,7 @@ function Messanger() {
               return (
                 <div className={"messanger__message-wrapper " + (message.user._id === user._id ? "flexEnd" : "flexStart")}>
                   <div className={"messanger__message-container"}>
-                    <Message key={message._id} name={message.user.name} text={message.text} date={message.date} />
+                    <MessageCard key={message._id} name={message.user.name} text={message.text} date={message.date} />
                   </div>
                 </div>
               )

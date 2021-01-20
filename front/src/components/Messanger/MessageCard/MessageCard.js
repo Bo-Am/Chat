@@ -1,7 +1,7 @@
 import React from 'react';
-import './Message.scss';
+import './MessageCard.scss';
 
-function Message({ name, text, date }) {
+function MessageCard({ name, text, date }) {
   return (
     <div className="message">
       <p className="from-me">{text}</p>
@@ -13,4 +13,4 @@ function Message({ name, text, date }) {
   )
 }
 
-export default Message;
+export default MessageCard;

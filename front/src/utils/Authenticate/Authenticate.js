@@ -9,6 +9,7 @@ export default function(ComposedComponent) {
     const { user } = useSelector(state => state);
 
     useEffect(() => {
+      // если пользователь не зарегистрирован, или не прошел проверку, то его перенаправляют на путь join
       if (!user) {
         props.history.push('/join');
       }
