@@ -1,0 +1,55 @@
+.messanger {
+  height: 100%;
+  box-sizing: border-box;
+}
+
+.messanger__text-field {
+  height: 90%;
+  border: 3px solid lightgrey;
+  background-color: white;
+}
+
+.messanger__input-field {
+  height: 10%;
+}
+
+.messanger__form {
+  height: 100%;
+}
+
+.messanger__input {
+  width: 80%;
+  height: 100%;
+  border: none;
+  padding: 0 20px;
+  cursor: pointer;
+}
+
+.messanger__btn {
+  height: 100%;
+  width: 20%;
+  border: none;
+  cursor: pointer;
+}
+
+.messanger__btn:hover {
+  background-color: lightgreen;
+}
+
+.messanger__message-wrapper {
+  width: 100%;
+  display: flex;
+}
+
+.flexEnd {
+  justify-content: flex-end;
+}
+
+.flexStart {
+  justify-content: flex-start;
+}
+
+.messanger__message-container {
+  width: 30%;
+  margin: 15px;
+}

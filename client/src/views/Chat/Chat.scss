@@ -1,0 +1,21 @@
+.chat {
+  position: relative;
+  z-index: 10;
+  width: 70%;
+  height: 500px;
+  background-color: #57c4e5;
+  display: flex;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  border-radius: 5px;
+}
+
+.chat__side-panel {
+  background-color: whitesmoke;
+  width: 20%;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+}
+
+.chat__main {
+  width: 80%;
+}

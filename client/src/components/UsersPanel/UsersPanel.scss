@@ -1,0 +1,16 @@
+.users-panel {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.head {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.users-panel__user {
+  margin-bottom: 10px;
+}
